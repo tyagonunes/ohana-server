@@ -24,7 +24,7 @@ def google_get_user_info(access_token):
         return id_token.verify_oauth2_token(
             access_token, 
             requests.Request(), 
-            settings.GOOGLE_OAUTH2_CLIENT_ID
+            # settings.GOOGLE_OAUTH2_CLIENT_ID
         )
     except Exception as e:
         return None
