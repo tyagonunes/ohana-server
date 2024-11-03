@@ -19,8 +19,7 @@ SECRET_KEY = 'django-insecure-^$e*8=u$2se$k^v=it+_e7guto0@*nn^!%nfl(qp51oil)%0w*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", False)
 
-# ALLOWED_HOSTS = env("ALLOWED_HOSTS", default=['.vercel.app'])
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app']
+ALLOWED_HOSTS = env("ALLOWED_HOSTS", default=['localhost'])
 
 
 # Application definition
@@ -76,22 +75,22 @@ AUTH_USER_MODEL = "usuarios.User"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': env('DB_NAME',default='ohana') ,
-#         'USER': env('DB_USER',default='postgres'),
-#         'PASSWORD': env('DB_PASSWORD',default='postgres'),
-#         'HOST': env('DB_HOST',default='localhost')
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DB_NAME',default='ohana') ,
+        'USER': env('DB_USER',default='postgres'),
+        'PASSWORD': env('DB_PASSWORD',default='postgres'),
+        'HOST': env('DB_HOST',default='localhost')
+    }
+}
 
 
 # Password validation
@@ -389,5 +388,3 @@ JAZZMIN_UI_TWEAKS = {
         "success": "btn-success"
     }
 }
-
-DEEPGRAM_API_KEY = env('DEEPGRAM_API_KEY', default='')
