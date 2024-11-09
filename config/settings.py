@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'tinymce',
     'apps.usuarios',
     'apps.contrib',
-    'apps.escola',
+    'apps.publicacoes',
     'apps.atendimento'
 ]
 

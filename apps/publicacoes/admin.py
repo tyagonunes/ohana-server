@@ -1,6 +1,6 @@
 from django.contrib import admin
 from apps.contrib.mixins import AuditoriaAdmin
-from apps.escola.models import *
+from apps.publicacoes.models import *
 
 
 @admin.register(Simbolo)

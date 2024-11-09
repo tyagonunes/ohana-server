@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class EscolaConfig(AppConfig):
+class PublicacoesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.escola'
+    name = 'apps.publicacoes'
