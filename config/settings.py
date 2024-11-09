@@ -35,8 +35,11 @@ INSTALLED_APPS = [
     "corsheaders",
     'rest_framework',
     'django_rest_passwordreset',
+    'tinymce',
     'apps.usuarios',
     'apps.contrib',
+    'apps.escola',
+    'apps.atendimento'
 ]
 
 MIDDLEWARE = [
@@ -235,13 +238,13 @@ DJANGO_REST_MULTITOKENAUTH_RESET_TOKEN_EXPIRY_TIME = 1
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "Clericus",
+    "site_title": "Ohana",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "Clericus",
+    "site_header": "Ohana",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "Clericus",
+    "site_brand": "Ohana",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
     "site_logo": None,
@@ -259,7 +262,7 @@ JAZZMIN_SETTINGS = {
     "site_icon": None,
 
     # Welcome text on the login screen
-    "welcome_sign": "Bem vindo ao Sistema Clericus",
+    "welcome_sign": "Bem vindo ao Sistema Ohana",
 
     # Copyright on the footer
     "copyright": "",
@@ -299,7 +302,7 @@ JAZZMIN_SETTINGS = {
     "navigation_expanded": False,
 
     # Hide these apps when generating side menu e.g (auth)
-    "hide_apps": [],
+    "hide_apps": ['django_rest_passwordreset'],
 
     # Hide these models when generating side menu (e.g auth.user)
     "hide_models": [],
@@ -388,3 +391,31 @@ JAZZMIN_UI_TWEAKS = {
         "success": "btn-success"
     }
 }
+
+TINYMCE_JS_URL = os.path.join('', "tinymce_v6/tinymce.min.js")
+TINYMCE_DEFAULT_CONFIG = {
+    # "height": "320px",
+    # "width": "960px",
+    "menubar": "file edit view insert format tools table help",
+    "plugins": "advlist autolink lists link image charmap preview anchor searchreplace visualblocks code "
+    "fullscreen insertdatetime media table code help wordcount",
+    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
+    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
+    "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
+    "fullscreen  preview save | insertfile image media pageembed template link anchor codesample | "
+    "a11ycheck ltr rtl | showcomments addcomment code",
+    "custom_undo_redo_levels": 10,
+    # "language": "es_ES",  # To force a specific language instead of the Django current language.
+}
+# TINYMCE_SPELLCHECKER = True
+# TINYMCE_COMPRESSOR = True
+# TINYMCE_EXTRA_MEDIA = {
+#     'css': {
+#         'all': [
+#             ...
+#         ],
+#     },
+#     'js': [
+#         ...
+#     ],
+# }

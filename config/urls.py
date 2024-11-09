@@ -13,6 +13,7 @@ urlpatterns = [
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
+    path('tinymce/', include('tinymce.urls')),
     path('usuarios/', include('apps.usuarios.urls')),
     path('contrib/', include('apps.contrib.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(
