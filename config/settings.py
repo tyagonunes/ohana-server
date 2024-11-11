@@ -19,7 +19,8 @@ SECRET_KEY = 'django-insecure-^$e*8=u$2se$k^v=it+_e7guto0@*nn^!%nfl(qp51oil)%0w*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", False)
 
-ALLOWED_HOSTS = env("ALLOWED_HOSTS", default=['localhost'])
+# ALLOWED_HOSTS = env("ALLOWED_HOSTS", default=['localhost','10.0.2.2','192.168.15.8'])
+ALLOWED_HOSTS = ['192.168.15.8', '10.0.2.2', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -205,10 +206,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configurações de CORS
 CORS_ALLOWED_ORIGINS = env("CORS_ALLOWED_ORIGINS", default=[
-    'http://127.0.0.1:8000',
-    'http://localhost:8000',
-    'http://localhost:5173',
-    "http://127.0.0.1:5173"])
+    'http://localhost:8081',
+    'http://localhost:8081/'
+])
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_WHITELIST = env("DJANGO_CORS_ORIGIN_WHITELIST", default=[
+    'http://localhost:8081',
+    ])
 
 
 # Google OAuth2 settings
