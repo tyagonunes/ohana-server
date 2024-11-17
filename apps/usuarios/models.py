@@ -18,6 +18,7 @@ class User(AbstractUser):
     email = models.CharField(max_length=250, unique=True, null=False, blank=False)
     metodo_registro = models.IntegerField(choices=CHOICES_METODO_REGISTRO, default=METODO_REGISTRO_EMAIL)
     foto_rede_social = models.URLField('Foto rede social', blank=True, null=True)
+    telefone = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
        return self.username

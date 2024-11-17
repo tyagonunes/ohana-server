@@ -19,6 +19,14 @@ class ProcedimentoMediacaoFilter(filters.FilterSet):
             'titulo':['icontains'],
         }
 
+class BlogFilter(filters.FilterSet):
+    class Meta:
+        model = Blog
+        fields = {
+            'titulo':['icontains'],
+        }
+
+
 
 class SimboloViewSet(ModelViewSet):
     queryset = Simbolo.objects.all()
@@ -31,6 +39,13 @@ class ProcedimentoMediacaoViewSet(ModelViewSet):
     queryset = ProcedimentoMediacao.objects.all()
     serializer_class = ProcedimentoMediacaoSerializer
     # filterset_class = ProcedimentoMediacaoFilter
+    http_method_names = ['get', 'patch', 'post', 'delete','put']
+
+
+class BlogViewSet(ModelViewSet):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+    # filterset_class = BlogFilter
     http_method_names = ['get', 'patch', 'post', 'delete','put']
 
     ProcedimentoMediacao

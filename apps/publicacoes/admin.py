@@ -27,3 +27,19 @@ class ProcedimentoMediacaoAdmin(AuditoriaAdmin):
     list_display = (
         'titulo',
     )
+
+@admin.register(CategoriaBlog)
+class CategoriaBlogAdmin(AuditoriaAdmin):
+    list_filter = ()
+    search_fields = ()
+    list_display = (
+        'titulo',
+    )
+
+@admin.register(Blog)
+class BlogAdmin(AuditoriaAdmin):
+    list_filter = ()
+    search_fields = ()
+    list_display = (
+        'titulo',
+    )
