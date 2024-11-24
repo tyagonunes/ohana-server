@@ -10,6 +10,7 @@ class SimboloFilter(filters.FilterSet):
         model = Simbolo
         fields = {
             'titulo':['icontains'],
+            'classes': ['exact'],
         }
 
 class ProcedimentoMediacaoFilter(filters.FilterSet):
@@ -31,9 +32,18 @@ class BlogFilter(filters.FilterSet):
 class SimboloViewSet(ModelViewSet):
     queryset = Simbolo.objects.all()
     serializer_class = SimboloSerializer
-    # filterset_class = SimboloFilter
+    filterset_class = SimboloFilter
     http_method_names = ['get', 'patch', 'post', 'delete','put']
 
+    # def get_queryset(self):
+    #     classes = self.request.query_params.getlist('classes[]')
+
+    #     if classes: 
+    #         queryset = queryset.filter(classes__in=classes)
+
+    #     queryset = super().get_queryset()
+
+    #     return queryset
 
 class ProcedimentoMediacaoViewSet(ModelViewSet):
     queryset = ProcedimentoMediacao.objects.all()
@@ -48,4 +58,15 @@ class BlogViewSet(ModelViewSet):
     # filterset_class = BlogFilter
     http_method_names = ['get', 'patch', 'post', 'delete','put']
 
-    ProcedimentoMediacao
+
+class ClasseSimboloViewSet(ModelViewSet):
+    queryset = ClasseSimbolo.objects.all()
+    serializer_class = ClasseSimboloSerializer
+    # filterset_class = BlogFilter
+    http_method_names = ['get', 'patch', 'post', 'delete','put']
+
+class CategoriaBlogViewSet(ModelViewSet):
+    queryset = CategoriaBlog.objects.all()
+    serializer_class = CategoriaBlogSerializer
+    # filterset_class = BlogFilter
+    http_method_names = ['get', 'patch', 'post', 'delete','put']

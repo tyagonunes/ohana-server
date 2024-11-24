@@ -9,7 +9,7 @@ class SimboloAdmin(AuditoriaAdmin):
     search_fields = ()
     list_display = (
         'titulo',
-        'imagem'
+        'imagem',
     )
 
 @admin.register(ClasseSimbolo)

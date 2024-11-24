@@ -31,6 +31,7 @@ class Simbolo(BaseModel):
     class Meta:
         verbose_name = 'Símbolo'
         verbose_name_plural = 'Símbolos'
+        ordering = ['-criado_em']
 
 
 class ProcedimentoMediacao(BaseModel):
@@ -73,3 +74,4 @@ class Blog(BaseModel):
     class Meta:
         verbose_name = 'Blog'
         verbose_name_plural = 'Blogs'
+        ordering = ['-criado_em']
