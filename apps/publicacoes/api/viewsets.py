@@ -1,6 +1,6 @@
 from django_filters import rest_framework as filters
 from rest_framework.viewsets import ModelViewSet
-
+from django.db.models import Q
 from apps.publicacoes.models import *
 from apps.publicacoes.api.serializers import *
 
@@ -25,6 +25,7 @@ class BlogFilter(filters.FilterSet):
         model = Blog
         fields = {
             'titulo':['icontains'],
+            'categorias':['exact']
         }
 
 
@@ -35,15 +36,15 @@ class SimboloViewSet(ModelViewSet):
     filterset_class = SimboloFilter
     http_method_names = ['get', 'patch', 'post', 'delete','put']
 
-    # def get_queryset(self):
-    #     classes = self.request.query_params.getlist('classes[]')
+    def get_queryset(self):
+        qs = super().get_queryset()
+        termo = self.request.query_params.get('termo')
+        if termo:
+            qs = qs.filter(Q(titulo__icontains=termo) | Q(palavras_chave__icontains=termo))
 
-    #     if classes: 
-    #         queryset = queryset.filter(classes__in=classes)
+        return qs
 
-    #     queryset = super().get_queryset()
 
-    #     return queryset
 
 class ProcedimentoMediacaoViewSet(ModelViewSet):
     queryset = ProcedimentoMediacao.objects.all()
@@ -55,7 +56,7 @@ class ProcedimentoMediacaoViewSet(ModelViewSet):
 class BlogViewSet(ModelViewSet):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
-    # filterset_class = BlogFilter
+    filterset_class = BlogFilter
     http_method_names = ['get', 'patch', 'post', 'delete','put']
 
 
