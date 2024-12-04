@@ -31,7 +31,7 @@ marshmallow==3.21.3
 multidict==6.0.5
 mypy-extensions==1.0.0
 packaging==24.1
-pillow==11.0.0
+pillow
 psycopg2-binary==2.9.9
 pyasn1==0.5.1
 pyasn1-modules==0.3.0
