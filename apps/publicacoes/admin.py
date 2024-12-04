@@ -43,3 +43,11 @@ class BlogAdmin(AuditoriaAdmin):
     list_display = (
         'titulo',
     )
+
+@admin.register(AgendaEventos)
+class BlogAdmin(AuditoriaAdmin):
+    list_filter = ()
+    search_fields = ()
+    list_display = (
+        'titulo', 'data'
+    )

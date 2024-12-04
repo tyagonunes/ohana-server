@@ -1,6 +1,7 @@
 from django.db import models
 from apps.contrib.mixins import BaseModel
 from tinymce.models import HTMLField
+from apps.publicacoes.choices import *
 
 class ClasseSimbolo(BaseModel):
     titulo = models.CharField('Titulo', max_length=255)
@@ -75,3 +76,19 @@ class Blog(BaseModel):
         verbose_name = 'Blog'
         verbose_name_plural = 'Blogs'
         ordering = ['-criado_em']
+
+
+class AgendaEventos(BaseModel):
+    titulo = models.CharField('Titulo', max_length=255)
+    descricao = models.TextField('Descrição', blank=True, null=True)
+    tipo_evento = models.IntegerField('Tipo de evento', choices=CHOICES_TIPO_EVENTO_AGENDA, default=TIPO_EVENTO_AGENDA_PUBLICO)
+    hora = models.TimeField('Hora do evento', blank=True, null=True)
+    data = models.DateField('Data')
+
+    def __str__(self):
+        return f'{self.data} - {self.titulo}'
+    
+    class Meta:
+        verbose_name = 'Agenda de eventos'
+        verbose_name_plural = 'Agendas de eventos'
+        

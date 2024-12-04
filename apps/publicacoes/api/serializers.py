@@ -34,3 +34,9 @@ class CategoriaBlogSerializer(ModelSerializer):
     class Meta:
         model = CategoriaBlog
         fields = '__all__'
+
+class AgendaEventosSerializer(ModelSerializer):
+    
+    class Meta:
+        model = AgendaEventos
+        fields = '__all__'

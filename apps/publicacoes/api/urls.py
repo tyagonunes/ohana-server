@@ -9,5 +9,7 @@ router.register(r'procedimento-mediacao', ProcedimentoMediacaoViewSet, basename=
 router.register(r'blog', BlogViewSet, basename='blog')
 router.register(r'categoria-blog', CategoriaBlogViewSet, basename='categoria_blog')
 router.register(r'blog', BlogViewSet, basename='blog')
+router.register(r'agenda-eventos', AgendaEventosViewSet, basename='agenda-eventos')
+router.register(r'agenda-eventos-calendario', AgendaEventosCalendarioViewSet, basename='agenda-eventos-calendario')
 
 urlpatterns = router.urls

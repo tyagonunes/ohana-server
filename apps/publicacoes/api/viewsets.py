@@ -1,6 +1,8 @@
 from django_filters import rest_framework as filters
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from django.db.models import Q
+from rest_framework.response import Response
+from rest_framework import status
 from apps.publicacoes.models import *
 from apps.publicacoes.api.serializers import *
 
@@ -71,3 +73,17 @@ class CategoriaBlogViewSet(ModelViewSet):
     serializer_class = CategoriaBlogSerializer
     # filterset_class = BlogFilter
     http_method_names = ['get', 'patch', 'post', 'delete','put']
+
+
+class AgendaEventosViewSet(ModelViewSet):
+    queryset = AgendaEventos.objects.all()
+    serializer_class = AgendaEventosSerializer
+    # filterset_class = ProcedimentoMediacaoFilter
+    http_method_names = ['get', 'patch', 'post', 'delete','put']
+
+
+class AgendaEventosCalendarioViewSet(GenericViewSet):
+
+    def list(self, request):
+        self.queryset = AgendaEventos.objects.all().values('titulo', 'descricao', 'tipo_evento', 'data', 'hora')
+        return Response({'results': self.queryset}, status=status.HTTP_200_OK)
