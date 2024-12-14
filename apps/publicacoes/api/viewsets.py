@@ -85,5 +85,5 @@ class AgendaEventosViewSet(ModelViewSet):
 class AgendaEventosCalendarioViewSet(GenericViewSet):
 
     def list(self, request):
-        self.queryset = AgendaEventos.objects.all().values('titulo', 'descricao', 'tipo_evento', 'data', 'hora')
+        self.queryset = AgendaEventos.objects.all().order_by('data').values('titulo', 'descricao', 'tipo_evento', 'data', 'hora')
         return Response({'results': self.queryset}, status=status.HTTP_200_OK)
