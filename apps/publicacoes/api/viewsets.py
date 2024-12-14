@@ -51,7 +51,7 @@ class SimboloViewSet(ModelViewSet):
 class ProcedimentoMediacaoViewSet(ModelViewSet):
     queryset = ProcedimentoMediacao.objects.all()
     serializer_class = ProcedimentoMediacaoSerializer
-    # filterset_class = ProcedimentoMediacaoFilter
+    filterset_class = ProcedimentoMediacaoFilter
     http_method_names = ['get', 'patch', 'post', 'delete','put']
 
 
